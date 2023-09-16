@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: var(--font-size);
+    font-family: 'Inter';
+}
+
+input,
+button {
+    outline: none;
+    border: none;
+    background: none;
+}
+
+input {
+    font-size: var(--font-size);
+}
+
+button {
+    cursor: pointer;
+}
+
+::placeholder {
+    color: var(--light-content-default-secondary);
+}

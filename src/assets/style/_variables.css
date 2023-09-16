@@ -1,0 +1,9 @@
+:root {
+    --font-size: 16px;
+
+    /* colors */
+    --light-text-primary: #050510;
+    --light-content-default-secondary: #c3c3c6;
+
+    --light-bg-secondary: #f7f7f8;
+}
