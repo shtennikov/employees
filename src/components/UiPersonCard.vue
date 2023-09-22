@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-        <div class="card__image" :style="{ 'background-image': `url(${personData.avatarUrl})` }"></div>
+        <div class="card__image"></div>
         <div class="card__data">
             <span class="card__name">
                 <span class="card__name_first">{{ `${personData.firstName} ${personData.lastName}` }}</span>
@@ -12,15 +12,17 @@
 </template>
 
 <script setup lang="ts">
-import { defineComponent, type PropType } from 'vue';
+import { defineComponent, type PropType, computed } from 'vue';
 import type { PersonData } from '@/types/interfaces';
 
-defineProps({
+const props = defineProps({
     personData: {
         type: Object as PropType<PersonData>,
         required: true
     }
 });
+
+const backrgoundImage = computed(() => `url(${props.personData.avatarUrl})`);
 
 defineComponent({
     name: 'UiPersonCard'
@@ -47,6 +49,7 @@ defineComponent({
     width: 72px;
     height: 72px;
     border-radius: 50%;
+    background-image: v-bind(backrgoundImage);
     background-position: center;
     background-size: cover;
 }
