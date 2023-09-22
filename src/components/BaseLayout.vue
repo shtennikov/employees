@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <header>
+        <header class="header">
             <slot name="header"></slot>
         </header>
 
@@ -18,7 +18,11 @@
 
 <style scoped>
 .wrapper {
-    max-width: 1180px;
+    max-width: 1280px;
     margin: auto;
+}
+
+.header {
+    margin-bottom: 8px;
 }
 </style>

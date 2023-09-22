@@ -1,8 +1,7 @@
 <template>
     <BaseLayout>
         <template #header>
-            <h2 class="search__title">Поиск</h2>
-            <UiSearchBar />
+            <UiHeader />
         </template>
 
         <template v-if="employees">
@@ -19,8 +18,8 @@
 import { ref, onMounted, type Ref } from 'vue';
 import type { PersonData } from './types/interfaces';
 import BaseLayout from './components/BaseLayout.vue';
-import UiSearchBar from './components/UiSearchBar.vue';
 import UiPersonCard from './components/UiPersonCard.vue';
+import UiHeader from './components/UiHeader.vue';
 
 const employees: Ref<PersonData[] | null> = ref(null);
 
