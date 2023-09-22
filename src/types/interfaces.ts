@@ -9,3 +9,8 @@ export interface PersonData {
     birthday: string;
     phone: string;
 }
+
+export interface TabsProp {
+    text: string;
+    value: string;
+}
