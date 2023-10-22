@@ -1,8 +1,9 @@
 <template>
     <BaseLayout>
-        <template #header>
-            <UiHeader />
-        </template>
+        <div class="header__container">
+            <h2 class="header__title">Поиск</h2>
+            <UiSearchBar v-model="searchInput" class="header__search-bar" />
+        </div>
 
         <template v-if="employees">
             <UiTabs class="tabs" v-model="currentTab" :options="tabsOptions" />
@@ -20,10 +21,11 @@ import { onMounted, ref, type Ref, defineComponent, computed } from 'vue';
 import type { PersonData, TabsProp } from '@/types/interfaces';
 import BaseLayout from './BaseLayout.vue';
 import UiPersonCard from './UiPersonCard.vue';
-import UiHeader from './UiHeader.vue';
+import UiSearchBar from './UiSearchBar.vue';
 import UiTabs from './UiTabs.vue';
 
 const currentTab = ref('all');
+const searchInput = ref('');
 
 const tabsOptions: TabsProp[] = [
     { text: 'Все', value: 'all' },
@@ -40,9 +42,13 @@ const tabsOptions: TabsProp[] = [
 const employees: Ref<PersonData[]> = ref([]);
 
 const filteredEmployees = computed(() => {
-    return currentTab.value === 'all'
-        ? employees.value
-        : employees.value.filter((item) => item.department === currentTab.value);
+    const searchQuery = searchInput.value.toLowerCase();
+
+    return employees.value.filter((employee) =>
+        (employee.firstName + employee.lastName + employee.department + employee.position + employee.userTag)
+            .toLowerCase()
+            .includes(searchQuery)
+    );
 });
 
 onMounted(() => {
